@@ -8,13 +8,13 @@ RM = rm -rf
 
 C++ = c++
 
-all:	${NAME}
+all:		${NAME}
 
-${NAME}:
-				${C++} ${FLAGS} ${SRC} -o ${NAME}
+${NAME}:	${SRC}
+			${C++} ${FLAGS} ${SRC} -o ${NAME}
 
 fclean:
-				${RM} ${NAME}
+			${RM} ${NAME}
 
 re: fclean all
 
