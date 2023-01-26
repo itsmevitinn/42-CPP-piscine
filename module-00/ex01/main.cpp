@@ -1,31 +1,37 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
+void  getInput(std::string output, std::string &buffer);
+
 void createContact(PhoneBook &myPhoneBook) {
   Contact newContact;
   std::string buffer;
 
-  std::cout << "First name: " << std::endl << "-> ";
-  std::getline(std::cin, buffer);
+  getInput("First name: " ,buffer);
   newContact.setFirstName(buffer);
 
-  std::cout << "Last name: " << std::endl << "-> ";
-  std::getline(std::cin, buffer);
+  getInput("Last name: " ,buffer);
   newContact.setLastName(buffer);
 
-  std::cout << "Nickname: " << std::endl << "-> ";
-  std::getline(std::cin, buffer);
+  getInput("Nickname: " ,buffer);
   newContact.setNickname(buffer);
 
-  std::cout << "Phone number: " << std::endl << "-> ";
-  std::getline(std::cin, buffer);
+  getInput("Phone number: " ,buffer);
   newContact.setPhoneNumber(buffer);
 
-  std::cout << "Darkest secret: " << std::endl << "-> ";
-  std::getline(std::cin, buffer);
+  getInput("Darkest secret: " ,buffer);
   newContact.setDarkestSecret(buffer);
   
   myPhoneBook.addContact(newContact);
+}
+
+void  getInput(std::string output, std::string &buffer){
+  std::cout << output << std::endl << "-> ";
+  std::getline(std::cin, buffer);
+  while(buffer.empty()){
+    std::cout << output << std::endl << "-> ";
+    std::getline(std::cin, buffer);
+  }
 }
 
 void  searchContact(PhoneBook &myPhoneBook){
