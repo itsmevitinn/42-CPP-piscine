@@ -5,10 +5,8 @@
 void PhoneBook::addContact(Contact newContact) {
   newContact.setId(this->_index + 1);
   this->_contactList[this->_index++] = newContact;
-  // a lista so ira crescer quando nao atingir o limite, quando atingir, o novo contato ira sobrepor o mais antigo
   if (this->_contactsSize < 8)
     this->_contactsSize++;
-  // resetando o index caso passe do tamanho maximo da lista
   this->_index = this->_index % 8;
   std::cout << "Contact added to PhoneBook!" << std::endl;
 }
