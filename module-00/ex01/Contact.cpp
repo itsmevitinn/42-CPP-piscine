@@ -24,7 +24,6 @@ int Contact::getId(void) {
 std::string Contact::getFirstName(void) {
   return this->_firstName;
 }
-
 std::string Contact::getLastName(void) {
   return this->_lastName;
 }
