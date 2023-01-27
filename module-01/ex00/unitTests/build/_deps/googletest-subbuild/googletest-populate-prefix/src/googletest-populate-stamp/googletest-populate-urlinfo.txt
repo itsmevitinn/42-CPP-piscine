@@ -1,0 +1,12 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=url
+command=/Users/vsergio/.brew/Cellar/cmake/3.25.2/bin/cmake;-P;/Users/vsergio/Documents/42/Github/cpp-piscine/module-01/unitTests/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/download-googletest-populate.cmake;COMMAND;/Users/vsergio/.brew/Cellar/cmake/3.25.2/bin/cmake;-P;/Users/vsergio/Documents/42/Github/cpp-piscine/module-01/unitTests/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/verify-googletest-populate.cmake;COMMAND;/Users/vsergio/.brew/Cellar/cmake/3.25.2/bin/cmake;-P;/Users/vsergio/Documents/42/Github/cpp-piscine/module-01/unitTests/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/extract-googletest-populate.cmake
+source_dir=/Users/vsergio/Documents/42/Github/cpp-piscine/module-01/unitTests/build/_deps/googletest-src
+work_dir=/Users/vsergio/Documents/42/Github/cpp-piscine/module-01/unitTests/build/_deps
+url(s)=https://github.com/google/googletest/archive/403a968d3c1e1de1232ba1c1a2775b74b9ea5579.zip
+hash=
+no_extract=
+
