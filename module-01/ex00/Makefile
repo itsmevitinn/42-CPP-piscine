@@ -1,6 +1,6 @@
 NAME = plantVsZombie
 
-SRC = ./src/main.cpp ./src/newZombie.cpp ./src/randomChump.cpp ./src/Zombie.cpp
+SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 

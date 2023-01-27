@@ -19,12 +19,12 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 set(Headers
-    ../includes/Zombie.hpp
+    ../Zombie.hpp
 )
 
 set(Sources
-    ../src/Zombie.cpp
-    ../src/newZombie.cpp
+    ../Zombie.cpp
+    ../newZombie.cpp
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})
