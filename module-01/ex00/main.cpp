@@ -6,8 +6,8 @@ void randomChump(std::string name);
 int main(void){
     Zombie* zombie;
 
-    zombie = newZombie("ratos gordos");
-    std::cout << "returned name: " << zombie->getName() << std::endl;
-    randomChump("kimuras");
+    zombie = newZombie("bye malloc!");
+    std::cout << "heap zombie name: " << zombie->getName() << std::endl;
+    randomChump("stack zombie");
     delete zombie;
 }
