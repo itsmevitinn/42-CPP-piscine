@@ -3,7 +3,7 @@
 Zombie* zombieHorde(int N, std::string name);
 
 int main(void) {
-	int N = 20;
+	int N = 5;
   Zombie* firstZombie = zombieHorde(N, "ratos");
 	Zombie* temp = firstZombie;
 
