@@ -4,12 +4,10 @@ Zombie* zombieHorde(int N, std::string name);
 
 int main(void) {
 	int N = 5;
-  Zombie* firstZombie = zombieHorde(N, "ratos");
-	Zombie* temp = firstZombie;
+  Zombie* zombies = zombieHorde(N, "ratos");
 
   for (int i = 0; i < N; i++) {
-    temp->announce();
-    temp++;
+    zombies[i].announce();
   }
-	delete[] firstZombie;
+	delete[] zombies;
 }
