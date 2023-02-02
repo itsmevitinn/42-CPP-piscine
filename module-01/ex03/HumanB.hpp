@@ -13,8 +13,8 @@ class HumanB {
  public:
   HumanB(std::string name);
   void setWeapon(Weapon& weaponInstance);
-  std::string getName(void);
-  void attack(void);
+  std::string getName(void) const;
+  void attack(void) const;
 };
 
 #endif
