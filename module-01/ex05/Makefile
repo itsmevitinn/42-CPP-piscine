@@ -18,12 +18,4 @@ fclean:
 
 re: fclean all
 
-test: ${NAME}
-			./${NAME} DEBUG
-			./${NAME} INFO
-			./${NAME} WARNING
-			./${NAME} ERROR
-			./${NAME} INVALID
-			./${NAME} MANY ARGC
-
 .PHONY: fclean, all, re
