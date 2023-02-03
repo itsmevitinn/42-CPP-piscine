@@ -17,7 +17,7 @@ void Harl::error(void) {
 }
 
 void Harl::complain(std::string level) {
-  // HarlMemFn aponta para um typedef da instancia atual, e esse typedef ira apontar para varias member-functions
+  // HarlMemFn eh um typedef da instancia atual(this), e esse typedef ira apontar para varias member-functions
   HarlMemFn memberFuncs[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
   std::string messages[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
