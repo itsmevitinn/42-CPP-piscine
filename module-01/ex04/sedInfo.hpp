@@ -22,6 +22,7 @@ class sedInfo {
   std::ifstream& getInfile(void);
   std::ofstream& getOutfile(void);
   std::string getReplaced(void);
+  std::string getReplacer(void);
   void writeToOutfile(std::string outfileContent);
   ~sedInfo(void);
 };

@@ -16,8 +16,8 @@ void sedInfo::setReplacer(std::string replacer) {
 
 void sedInfo::setInfile(std::string infile) {
   this->_infile.open(infile);
-	if (!this->_infile.is_open())
-		throw(infile + ": No such file or directory");
+  if (!this->_infile.is_open())
+    throw(infile + ": No such file or directory");
 }
 
 sedInfo::~sedInfo(void) {
@@ -27,8 +27,8 @@ sedInfo::~sedInfo(void) {
 
 void sedInfo::setOutfile(std::string outfile) {
   this->_outfile.open(outfile + ".replace");
-	if (!this->_outfile.is_open())
-		throw("Cannot open file: " + outfile);
+  if (!this->_outfile.is_open())
+    throw("Cannot open file: " + outfile);
 }
 
 std::ifstream& sedInfo::getInfile(void) {
@@ -42,7 +42,9 @@ std::ofstream& sedInfo::getOutfile(void) {
 std::string sedInfo::getReplaced(void) {
   return (this->_replaced);
 }
-
+std::string sedInfo::getReplacer(void) {
+  return (this->_replacer);
+}
 void sedInfo::writeToOutfile(std::string outfileContent) {
-	this->getOutfile() << outfileContent << std::endl;
+  this->getOutfile() << outfileContent << std::endl;
 }
