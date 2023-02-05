@@ -33,6 +33,6 @@ int main(int argc, char** argv) {
     }
   } catch (std::string error) {
     std::cerr << error << std::endl;
-    exit(0);
+    return(0);
   }
 }
