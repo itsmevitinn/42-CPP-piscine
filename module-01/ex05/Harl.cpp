@@ -23,7 +23,7 @@ void Harl::complain(std::string level) {
 
   for (int i = 0; i < 4; i++) {
     if (level == messages[i])
-      // invoca a funcao no indice que o typedef esta recebendo
+      // invoca a funcao correspondente ao indice que o typedef esta recebendo
       (this->*memberFuncs[i])();
   }
 }
