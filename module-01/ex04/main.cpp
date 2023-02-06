@@ -10,11 +10,8 @@ void getOutfileContent(sedInfo& data) {
     outfileContent.clear();
     offset = 0;
     while ((indexToReplace = line.find(data.getReplaced(), offset)) != std::string::npos) {
-      // essa diferenca ira escrever da onde parou a ultima string ate antes do comeco da string que ira ser substituida
       outfileContent.append(line, offset, indexToReplace - offset);
-      // apos copiar os caracteres remanescentes ate antes do data.getReplaced(), vai "substituir" onde deveria ser a string data.getReplaced() pela nova string
       outfileContent += data.getReplacer();
-      // aqui ira avancar o offset para depois da string que foi substituida
       offset = indexToReplace + data.getReplaced().length();
     }
     outfileContent.append(line, offset, std::string::npos);
@@ -22,17 +19,22 @@ void getOutfileContent(sedInfo& data) {
   }
 }
 
+void check_arguments(int argc, char* replaced) {
+  if (argc != 4)
+    throw(std::string("Invalid numbers of argc!"));
+  else if (!*replaced) {
+    throw(std::string("Content to be replaced can't be a empty string!"));
+  }
+}
+
 int main(int argc, char** argv) {
   try {
-    if (argc == 4) {
-      sedInfo data(argv[1], argv[2], argv[3]);
-      data.setOutfile(argv[1]);
-      getOutfileContent(data);
-    } else {
-      throw(std::string("Invalid numbers of argc!"));
-    }
+    check_arguments(argc, argv[2]);
+    sedInfo data(argv[1], argv[2], argv[3]);
+    data.setOutfile(argv[1]);
+    getOutfileContent(data);
   } catch (std::string error) {
     std::cerr << error << std::endl;
-    return(0);
+    return (0);
   }
 }
