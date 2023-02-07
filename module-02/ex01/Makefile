@@ -1,4 +1,4 @@
-NAME = canonical
+NAME = fixedPoint
 
 SRC = main.cpp Fixed.cpp
 
