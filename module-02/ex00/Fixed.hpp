@@ -13,6 +13,8 @@ class Fixed {
   Fixed(const Fixed& instance);
   ~Fixed(void);
   Fixed& operator = (const Fixed& instance);
+  int getRawBits(void) const;
+  void setRawBits(int const raw);
 };
 
 #endif

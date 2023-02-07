@@ -1,6 +1,6 @@
-NAME = harl
+NAME = canonical
 
-SRC = main.cpp Harl.cpp
+SRC = main.cpp Fixed.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
