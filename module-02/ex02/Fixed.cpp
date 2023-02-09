@@ -17,7 +17,7 @@ Fixed::Fixed(const Fixed& instance) {
   if (this != &instance) {
     *this = instance;
   } else {
-    std::cerr << "Cannot assign duplicated instances!" << std::endl;
+    std::cerr << "Cannot copy the same instance!" << std::endl;
   }
 }
 
@@ -115,7 +115,7 @@ Fixed& Fixed::operator*(const Fixed& afterOperator) {
 }
 
 Fixed& Fixed::operator/(const Fixed& afterOperator) {
-  // multiplicamos o resultado por 256 (ligar o primeiro bit da esquerda p/ direita) p/ o operador << conseguir printar esse resultado como float corretamente
+  // multiplicamos o resultado por 256 (ligar o primeiro bit da esquerda) p/ o operador << conseguir printar esse resultado como float corretamente
   this->_fixedPointNumber = (this->getRawBits() / afterOperator.getRawBits() * (1 << this->_bits));
   return (*this);
 }
