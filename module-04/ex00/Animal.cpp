@@ -6,7 +6,7 @@ Animal::Animal(void) : _type("Animal") {
 }
 
 Animal::Animal(std::string name) : _type(name) {
-  std::cout << "Animal name constructor called" << std::endl;
+  std::cout << "Animal (" << name << ") constructor called" << std::endl;
 }
 
 // copy constructor
