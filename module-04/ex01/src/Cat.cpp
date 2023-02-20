@@ -6,13 +6,10 @@ Cat::Cat(void) : Animal("Cat"), _myBrain(new Brain()) {
 }
 
 // copy constructor
-Cat::Cat(const Cat& instance) {
+Cat::Cat(const Cat& instance) : Animal(instance) {
   std::cout << "Cat copy constructor called" << std::endl;
-  if (this != &instance) {
-    *this = instance;
-  } else {
-    std::cout << "Cannot assign duplicated instances!" << std::endl;
-  }
+  //copying "Brain" here because the animal copy constructor doesn't copy
+  this->_myBrain = new Brain(*instance._myBrain);
 }
 
 // destructor
