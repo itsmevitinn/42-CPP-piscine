@@ -22,17 +22,21 @@ void PhoneBook::printContacts(void) {
   }
 }
 
-void  PhoneBook::printHeader(void){
+void PhoneBook::printHeader(void) {
   std::cout << std::endl;
-  std::cout << std::right << std::setw(10) << "INDEX" << "|";
-  std::cout << std::right << std::setw(10) << "FIRST NAME" << "|";
-  std::cout << std::right << std::setw(10) << "LAST NAME" << "|";
-  std::cout << std::right << std::setw(10) << "NICKNAME" << "|" << std::endl;
+  std::cout << std::right << std::setw(10) << "INDEX"
+            << "|";
+  std::cout << std::right << std::setw(10) << "FIRST NAME"
+            << "|";
+  std::cout << std::right << std::setw(10) << "LAST NAME"
+            << "|";
+  std::cout << std::right << std::setw(10) << "NICKNAME"
+            << "|" << std::endl;
 }
 
-void  PhoneBook::printColumn(std::string info){
+void PhoneBook::printColumn(std::string info) {
   if (info.size() > 10)
-    info = info.substr(0,9) + '.';
+    info = info.substr(0, 9) + '.';
   std::cout << std::right << std::setw(10) << info << "|";
 }
 
@@ -52,8 +56,5 @@ void PhoneBook::contactInfo(int contactId) {
   std::cout << "Contact not found!" << std::endl;
 }
 
-PhoneBook::PhoneBook(void) {
-  this->_index = 0;
-  this->_contactsSize = 0;
-  return;
+PhoneBook::PhoneBook(void) : _contactsSize(0), _index(0) {
 }
