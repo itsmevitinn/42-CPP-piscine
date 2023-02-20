@@ -6,7 +6,7 @@ WrongAnimal::WrongAnimal(void) : _type("WrongAnimal") {
 }
 
 WrongAnimal::WrongAnimal(std::string name) : _type(name) {
-  std::cout << "WrongAnimal name constructor called" << std::endl;
+  std::cout << "WrongAnimal (" << name << ") constructor called" << std::endl;
 }
 
 // copy constructor
