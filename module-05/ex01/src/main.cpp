@@ -31,7 +31,9 @@ int main(void) {
     Bureaucrat politician3("obama", 40);
     Bureaucrat politician4("joebiden", 40);
     Form sheet("gsheet", 50, 50);
+    std::cout << sheet << std::endl;
     politician3.signForm(sheet);
+    std::cout << sheet << std::endl;
     politician4.signForm(sheet);
     Form sheet2("testsheet", 20, 20);
     politician3.signForm(sheet2);

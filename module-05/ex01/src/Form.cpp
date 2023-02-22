@@ -77,9 +77,9 @@ const char* Form::AlreadySigned::what() const throw() {
 
 // global overload
 std::ostream& operator<<(std::ostream& os, const Form& sheet) {
-  os << "Form name: " << sheet.getName() << std::endl;
-  os << "Form signed: " << sheet.getSigned() << std::endl;
-  os << "Form sign grade: " << sheet.getSignGrade() << std::endl;
-  os << "Form exec grade: " << sheet.getExecGrade() << std::endl;
+  os << std::endl << "Form name: " << sheet.getName() << std::endl;
+  os << "signed: " << std::boolalpha << sheet.getSigned();
+  os << " | sign grade: " << sheet.getSignGrade();
+  os << " | exec grade: " << sheet.getExecGrade() << std::endl;
   return (os);
 }
