@@ -1,4 +1,6 @@
-#include "Bureaucrat.hpp"
+#include "../includes/Bureaucrat.hpp"
+
+#include "../includes/Form.hpp"
 
 // constructors and destructors
 Bureaucrat::Bureaucrat(void) : _name("non-defined"), _grade(150) {
@@ -8,9 +10,9 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
   std::cout << "Bureaucrat name & grade constructor called" << std::endl;
   if (grade > 150) {
     // throwing the custom exception
-    throw Bureaucrat::GradeTooHighException("Bureaucrat grade is too high!");
+    throw Bureaucrat::GradeTooHighException();
   } else if (grade < 1) {
-    throw Bureaucrat::GradeTooLowException("Bureaucrat grade is too low!");
+    throw Bureaucrat::GradeTooLowException();
   } else {
     this->_grade = grade;
   }
@@ -45,12 +47,12 @@ int Bureaucrat::getGrade(void) const {
 }
 void Bureaucrat::increaseGrade(void) {
   if (++this->_grade > 150) {
-    throw Bureaucrat::GradeTooHighException("Bureaucrat grade is too high after increase!");
+    throw Bureaucrat::GradeTooHighException();
   }
 }
 void Bureaucrat::reduceGrade(void) {
   if (--this->_grade < 1) {
-    throw Bureaucrat::GradeTooLowException("Bureaucrat grade is too low after increase!");
+    throw Bureaucrat::GradeTooLowException();
   }
 }
 
@@ -59,38 +61,23 @@ void Bureaucrat::signForm(Form& sheet) {
     sheet.beSigned(*this);
     if (sheet.getSigned() == true) {
       std::cout << this->getName() << " signed " << sheet.getName() << std::endl;
-    } else {
-      throw Bureaucrat::FormNotSigned(this->getName() + " couldn't sign " + sheet.getName() + " because his grade is too low!");
     }
   } catch (std::exception& e) {
-    std::cout << e.what() << std::endl;
+    std::cout << this->getName() << " couldn't sign " << sheet.getName() << " because " << e.what() << std::endl;
   }
 }
 
 // custom exceptions (overriding the virtual member-function std::exception::what from std::exception)
-
-Bureaucrat::GradeTooHighException::GradeTooHighException(std::string message) {
-  this->message = message;
-}
-
-Bureaucrat::GradeTooLowException::GradeTooLowException(std::string message) {
-  this->message = message;
-}
-
-Bureaucrat::FormNotSigned::FormNotSigned(std::string message) {
-  this->message = message;
-}
-
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-  return (this->message.c_str());
+  return ("Bureaucrat: Grade is too high!");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-  return (this->message.c_str());
+  return ("Bureaucrat: Grade is too low!");
 }
 
 const char* Bureaucrat::FormNotSigned::what() const throw() {
-  return (this->message.c_str());
+  return ("Bureaucrat: Form wasn't signed because !");
 }
 
 // global overload

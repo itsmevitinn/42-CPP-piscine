@@ -1,5 +1,7 @@
 #include "Form.hpp"
 
+#include "Bureaucrat.hpp"
+
 // constructors and destructors
 Form::Form(void) : _name("undefined"), _signed(false), _signGrade(0), _execGrade(0) {
   std::cout << "Form default constructor called" << std::endl;
@@ -7,9 +9,9 @@ Form::Form(void) : _name("undefined"), _signed(false), _signGrade(0), _execGrade
 
 Form::Form(std::string name, const int signGrade, int execGrade) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
   if (this->getSignGrade() > 150 || this->getExecGrade() > 150) {
-    Form::GradeTooHighException("signGrade or execGrade is too high!");
+    throw Form::GradeTooHighException();
   } else if (this->getSignGrade() < 1 || this->getExecGrade() < 1) {
-    Form::GradeTooLowException("signGrade or execGrade is too low!");
+    throw Form::GradeTooLowException();
   }
   std::cout << "Form fill constructor called" << std::endl;
 }
@@ -47,30 +49,30 @@ int Form::getExecGrade(void) const {
   return (this->_execGrade);
 }
 
+// member function
+void Form::beSigned(Bureaucrat& politician) {
+  if (!this->getSigned()) {
+    if (politician.getGrade() <= this->getSignGrade()) {
+      this->_signed = true;
+    } else {
+      throw Form::GradeTooLowException();
+    }
+  } else {
+    throw Form::AlreadySigned();
+  }
+}
+
 // my custom exceptions
-Form::GradeTooHighException::GradeTooHighException(std::string message) {
-  this->message = message;
-}
-
-Form::GradeTooLowException::GradeTooLowException(std::string message) {
-  this->message = message;
-}
-
 const char* Form::GradeTooHighException::what() const throw() {
-  return (this->message.c_str());
+  return ("grade is too high!");
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-  return (this->message.c_str());
+  return ("his grade is too low!");
 }
 
-// member function
-void Form::beSigned(Bureaucrat& politician) {
-  if (politician.getGrade() <= this->getSignGrade()) {
-    this->_signed = true;
-  } else {
-    Form::GradeTooLowException("Bureaucrat grade is too low and form wasn't signed!");
-  }
+const char* Form::AlreadySigned::what() const throw() {
+  return ("form is already signed!");
 }
 
 // global overload

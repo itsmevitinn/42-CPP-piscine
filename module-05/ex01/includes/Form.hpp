@@ -5,6 +5,8 @@
 
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form {
  private:
   const std::string _name;
@@ -36,14 +38,14 @@ class Form {
   // my custom exceptions
   class GradeTooHighException : public std::exception {
    public:
-    std::string message;
-    GradeTooHighException(std::string message);
     const char* what() const throw();
   };
   class GradeTooLowException : public std::exception {
    public:
-    std::string message;
-    GradeTooLowException(std::string message);
+    const char* what() const throw();
+  };
+  class AlreadySigned : public std::exception {
+   public:
     const char* what() const throw();
   };
 };
