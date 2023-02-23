@@ -18,9 +18,10 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::action(Bureaucrat const& executor) const {
   Form::execute(executor);
-  std::ofstream file(this->getTarget() + "_shrubbery");
+  std::ofstream file;
+  file.open((this->getTarget() + "_shrubbery").c_str());
   if (!file.is_open()) {
-    throw std::ofstream::failure(strerror(errno));
+    throw std::ofstream::failure("Failed to open file!");
   }
   file << "              v .   ._, |_  .," << std::endl;
   file << "           `-._\\/  .  \\ /    |/_" << std::endl;
