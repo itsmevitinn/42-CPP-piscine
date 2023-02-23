@@ -24,7 +24,9 @@ int main(void) {
       joebiden.signForm(*forms[i]);
       obama.executeForm(*forms[i]);
     }
-
+    for (int i = 0; i < 3; i++) {
+      delete forms[i];
+    }
     Form* invalidname = someRandomIntern.makeForm("", "Salve");
     std::cout << *invalidname;
   } catch (std::exception& e) {

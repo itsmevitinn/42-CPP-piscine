@@ -22,7 +22,7 @@ class Form {
   Form(std::string name, std::string target);
   Form(std::string name, int signGrade, int execGrade);
   Form(std::string name, std::string target, int signGrade, int execGrade);
-  ~Form(void);
+  virtual ~Form(void);
 
   // copy constructors
   Form(const Form& copy);
