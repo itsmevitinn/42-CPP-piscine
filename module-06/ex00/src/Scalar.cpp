@@ -89,6 +89,5 @@ int Scalar::isInvalid(std::string string) {
       return (1);
     }
   }
-  std::cout << "teste: " << std::isdigit('0') << std::endl;
   return (0);
 }
