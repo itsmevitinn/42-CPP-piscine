@@ -85,9 +85,10 @@ int Scalar::isInvalid(std::string string) {
   for (unsigned long i = 0; i < string.size(); i++) {
     if (dots > 1) {
       return (1);
-    } else if (!std::isdigit(string[i]) && string[i] != '0' && string[i] != 'f' && string[i] != '.' && !this->isPseudoLiteral(string)) {
+    } else if (!std::isdigit(string[i]) && string[i] != 'f' && string[i] != '.' && !this->isPseudoLiteral(string)) {
       return (1);
     }
   }
+  std::cout << "teste: " << std::isdigit('0') << std::endl;
   return (0);
 }
