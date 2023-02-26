@@ -25,6 +25,8 @@ class Scalar {
     const char* what() const throw();
   };
   int isPseudoLiteral(std::string string);
-  int isInvalid(std::string string);
+  int isOverflow(std::string string);
+  void printCharLiteral(char letter);
+  void getValues(std::string string);
 };
 #endif
