@@ -27,6 +27,9 @@ class Scalar {
   int isPseudoLiteral(std::string string);
   int isOverflow(std::string string);
   void printCharLiteral(char letter);
-  void getValues(std::string string);
+  void printInt(std::string string);
+  void printChar(std::string string);
+  void printFloat(std::string string);
+  void printDouble(std::string string);
 };
 #endif

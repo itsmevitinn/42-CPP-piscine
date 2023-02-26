@@ -4,28 +4,17 @@ Scalar::Scalar(void) {
 }
 
 Scalar::Scalar(std::string string) {
-  if (string.empty() || this->isOverflow(string)) {
+  if (string.empty()) {
     throw Scalar::InvalidInput();
   }
   if (string.size() == 1 && isprint(string[0]) && !isdigit(string[0])) {
     this->printCharLiteral(string[0]);
     return;
   }
-  this->getValues(string);
-  if (this->isPseudoLiteral(string)) {
-    std::cout << "char: impossible" << std::endl;
-    std::cout << "int: impossible" << std::endl;
-  } else {
-    std::cout << "char: " << this->_charValue << std::endl;
-    std::cout << "int: " << this->_intValue << std::endl;
-  }
-  if (this->_floatValue - static_cast<int>(this->_floatValue) == 0) {
-    std::cout << "float: " << this->_floatValue << ".0f" << std::endl;
-    std::cout << "double: " << this->_doubleValue << ".0" << std::endl;
-  } else {
-    std::cout << "float: " << this->_floatValue << "f" << std::endl;
-    std::cout << "double: " << static_cast<double>(this->_doubleValue) << std::endl;
-  }
+  this->printChar(string);
+  this->printInt(string);
+  this->printFloat(string);
+  this->printDouble(string);
 }
 
 Scalar::~Scalar(void) {
@@ -57,7 +46,9 @@ int Scalar::isPseudoLiteral(std::string string) {
 }
 
 int Scalar::isOverflow(std::string string) {
-  if (std::atof(string.c_str()) > std::numeric_limits<int>::max() || std::atof(string.c_str()) < std::numeric_limits<int>::min()) {
+  if (isPseudoLiteral(string)) {
+    return (0);
+  } else if (std::atof(string.c_str()) > std::numeric_limits<int>::max() || std::atof(string.c_str()) < std::numeric_limits<int>::min()) {
     return (1);
   }
   return (0);
@@ -73,15 +64,43 @@ void Scalar::printCharLiteral(char letter) {
   std::cout << "double: " << static_cast<double>(letter) << ".0" << std::endl;
 }
 
-void Scalar::getValues(std::string string) {
+void Scalar::printChar(std::string string) {
   this->_intValue = std::atoi(string.c_str());
-  this->_floatValue = static_cast<float>(std::atof(string.c_str()));
-  this->_doubleValue = std::atof(string.c_str());
-  if (this->_intValue >= 32 && this->_intValue <= 126) {
+  if (isPseudoLiteral(string)) {
+    std::cout << "char: impossible" << std::endl;
+  } else if (this->_intValue >= 32 && this->_intValue <= 126) {
     this->_charValue = "'";
     this->_charValue += static_cast<char>(this->_intValue);
     this->_charValue += "'";
+    std::cout << "char: " << this->_charValue << std::endl;
   } else {
-    this->_charValue = "Non displayable";
+    std::cout << "char: Non displayable" << std::endl;
+  }
+}
+
+void Scalar::printInt(std::string string) {
+  if (this->isPseudoLiteral(string) || this->isOverflow(string)) {
+    std::cout << "int: impossible" << std::endl;
+  } else {
+    this->_intValue = std::atoi(string.c_str());
+    std::cout << "int: " << this->_intValue << std::endl;
+  }
+}
+
+void Scalar::printDouble(std::string string) {
+  this->_doubleValue = std::atof(string.c_str());
+  if (this->_floatValue - static_cast<int>(this->_floatValue) == 0) {
+    std::cout << "double: " << this->_doubleValue << ".0" << std::endl;
+  } else {
+    std::cout << "double: " << static_cast<double>(this->_doubleValue) << std::endl;
+  }
+}
+
+void Scalar::printFloat(std::string string) {
+  this->_floatValue = static_cast<float>(std::atof(string.c_str()));
+  if (this->_floatValue - static_cast<int>(this->_floatValue) == 0) {
+    std::cout << "float: " << this->_floatValue << ".0f" << std::endl;
+  } else {
+    std::cout << "float: " << this->_floatValue << "f" << std::endl;
   }
 }
