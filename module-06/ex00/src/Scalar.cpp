@@ -4,9 +4,6 @@ Scalar::Scalar(void) {
 }
 
 Scalar::Scalar(std::string string) {
-  if (string.empty() || this->isInvalid(string)) {
-    throw Scalar::InvalidInput();
-  }
   if (string.size() == 1 && isprint(string[0]) && !isdigit(string[0])) {
     this->_charValue = "'";
     this->_charValue += static_cast<char>(string[0]);
@@ -16,6 +13,9 @@ Scalar::Scalar(std::string string) {
     std::cout << "float: " << static_cast<float>(string[0]) << ".0f" << std::endl;
     std::cout << "double: " << static_cast<double>(string[0]) << ".0" << std::endl;
     return;
+  }
+  if (string.empty() || this->isInvalid(string)) {
+    throw Scalar::InvalidInput();
   }
   this->_intValue = std::atoi(string.c_str());
   this->_floatValue = static_cast<float>(std::atof(string.c_str()));
