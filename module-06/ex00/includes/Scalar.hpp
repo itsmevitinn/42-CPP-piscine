@@ -1,8 +1,9 @@
 #ifndef SCALAR_HPP
 #define SCALAR_HPP
 
+#include <cstdlib>
 #include <iostream>
-
+#include <limits>
 class Scalar {
  private:
   std::string _charValue;
