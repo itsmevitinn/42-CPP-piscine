@@ -20,13 +20,12 @@ Scalar::Scalar(std::string string) {
   this->_intValue = std::atoi(string.c_str());
   this->_floatValue = static_cast<float>(std::atof(string.c_str()));
   this->_doubleValue = std::atof(string.c_str());
-  if (!isprint(this->_intValue)) {
-    this->_charValue = "Non displayable";
-  }
-  else if (isprint(this->_intValue)) {
+  if (this->_intValue >= 32 && this->_intValue <= 126) {
     this->_charValue = "'";
     this->_charValue += static_cast<char>(this->_intValue);
     this->_charValue += "'";
+  } else {
+    this->_charValue = "Non displayable";
   }
   if (this->isPseudoLiteral(string)) {
     std::cout << "char: impossible" << std::endl;
