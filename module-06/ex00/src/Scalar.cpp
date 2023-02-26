@@ -20,10 +20,10 @@ Scalar::Scalar(std::string string) {
   this->_intValue = std::atoi(string.c_str());
   this->_floatValue = static_cast<float>(std::atof(string.c_str()));
   this->_doubleValue = std::atof(string.c_str());
-  if (this->_charValue.empty() && !isprint(this->_intValue)) {
+  if (!isprint(this->_intValue)) {
     this->_charValue = "Non displayable";
   }
-  if (this->_charValue.empty() && isprint(this->_intValue)) {
+  else if (isprint(this->_intValue)) {
     this->_charValue = "'";
     this->_charValue += static_cast<char>(this->_intValue);
     this->_charValue += "'";
