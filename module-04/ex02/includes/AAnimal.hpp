@@ -1,23 +1,23 @@
-#ifndef DEADANIMAL_HPP
-#define DEADANIMAL_HPP
+#ifndef AANIMAL_HPP
+#define AANIMAL_HPP
 
 #include <iostream>
 
 //abstract class because have at least one pure virtual function
-class DeadAnimal {
+class AAnimal {
  protected:
   std::string _type;
 
  public:
   // constructors
-  DeadAnimal(void);
-  DeadAnimal(std::string name);
+  AAnimal(void);
+  AAnimal(std::string name);
   // copy constructor
-  DeadAnimal(const DeadAnimal& copy);
+  AAnimal(const AAnimal& copy);
   // destructors
-  virtual ~DeadAnimal(void);
+  virtual ~AAnimal(void);
   // copy assignment operator
-  DeadAnimal& operator=(const DeadAnimal& copy);
+  AAnimal& operator=(const AAnimal& copy);
   // member functions
   std::string getType(void) const;
   //pure virtual function

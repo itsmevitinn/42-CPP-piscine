@@ -3,10 +3,10 @@
 
 #include <iostream>
 
-#include "DeadAnimal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Dog : public DeadAnimal {
+class Dog : public AAnimal {
  private:
   Brain* _myBrain;
 

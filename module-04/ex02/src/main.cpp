@@ -1,11 +1,11 @@
 #include "../includes/Cat.hpp"
-#include "DeadAnimal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
 int main(void) {
-  DeadAnimal* horde[4];
+  AAnimal* horde[4];
   for (int i = 0; i < 2; i++) {
     horde[i] = new Dog();
     horde[i + 2] = new Cat();

@@ -1,14 +1,14 @@
 #include "../includes/Dog.hpp"
 
 // constructors
-Dog::Dog(void) : DeadAnimal("Dog"), _myBrain(new Brain()) {
+Dog::Dog(void) : AAnimal("Dog"), _myBrain(new Brain()) {
   std::cout << "Dog default constructor called" << std::endl;
 }
 
 // copy constructor
-Dog::Dog(const Dog& instance) : DeadAnimal(instance) {
+Dog::Dog(const Dog& instance) : AAnimal(instance) {
   std::cout << "Dog copy constructor called" << std::endl;
-  //copying "Brain" here because the DeadAnimal copy constructor doesn't copy
+  //copying "Brain" here because the AAnimal copy constructor doesn't copy
   this->_myBrain = new Brain(*instance._myBrain);
 }
 

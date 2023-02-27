@@ -1,6 +1,6 @@
 NAME = abstract
 
-FUNCS = main.cpp Cat.cpp Dog.cpp DeadAnimal.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+FUNCS = main.cpp Cat.cpp Dog.cpp AAnimal.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 SRC = $(addprefix src/, $(FUNCS))
 
