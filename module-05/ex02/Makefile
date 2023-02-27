@@ -1,4 +1,4 @@
-NAME = maggots
+NAME = forms
 
 INCLUDES = includes
 
