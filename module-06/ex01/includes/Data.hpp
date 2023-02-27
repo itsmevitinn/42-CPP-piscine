@@ -2,6 +2,7 @@
 #define DATA_HPP
 
 #include <iostream>
+#include <stdint.h>
 
 typedef struct {
   std::string name;
