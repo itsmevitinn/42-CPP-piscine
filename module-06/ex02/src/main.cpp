@@ -23,7 +23,7 @@ int main(void) {
 Base* generate(void) {
   Base* derived;
   srand((unsigned)time(NULL));
-  switch (rand() % 3) {
+  switch (rand() % 8) {
     case 0:
       derived = new A();
       break;
@@ -62,9 +62,9 @@ void identify(Base& p) {
     } else if (dynamic_cast<C*>(&p)) {
       std::cout << "C" << std::endl;
     } else {
-      throw std::bad_cast();
+      throw static_cast<std::string>("Bad reference cast");
     }
-  } catch (std::bad_cast& e) {
-    std::cerr << e.what() << std::endl;
+  } catch (std::string error) {
+    std::cerr << error << std::endl;
   }
 }
