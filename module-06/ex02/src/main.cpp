@@ -23,7 +23,7 @@ int main(void) {
 Base* generate(void) {
   Base* derived;
   srand((unsigned)time(NULL));
-  switch (rand() % 8) {
+  switch (rand() % 3) {
     case 0:
       derived = new A();
       break;
