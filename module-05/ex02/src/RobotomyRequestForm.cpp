@@ -19,7 +19,6 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& i
 
 void RobotomyRequestForm::action(Bureaucrat const& executor) const {
   Form::execute(executor);
-  srand((unsigned)time(NULL));
   std::cout << "Making some drilling noises!" << std::endl;
   if ((rand() % 10) <= 4) {
     std::cout << this->getTarget() << " has been robotomized!" << std::endl;

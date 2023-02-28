@@ -1,10 +1,11 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include "PresidentialPardonForm.hpp"
 int main(void) {
   try {
+    srand((unsigned)time(NULL));
     Bureaucrat obama("obama", 5);
     Bureaucrat joebiden("joebiden", 150);
 
@@ -24,6 +25,8 @@ int main(void) {
     joebiden.signForm(robotomy);
     obama.signForm(robotomy);
     joebiden.signForm(robotomy);
+    obama.executeForm(robotomy);
+    obama.executeForm(robotomy);
     obama.executeForm(robotomy);
 
     PresidentialPardonForm presidential("george bush");
