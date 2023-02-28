@@ -9,9 +9,9 @@ Form::Form(void) : _name("undefined"), _signed(false), _signGrade(0), _execGrade
 
 Form::Form(std::string name, const int signGrade, int execGrade) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
   if (this->getSignGrade() > 150 || this->getExecGrade() > 150) {
-    throw Form::GradeTooHighException();
-  } else if (this->getSignGrade() < 1 || this->getExecGrade() < 1) {
     throw Form::GradeTooLowException();
+  } else if (this->getSignGrade() < 1 || this->getExecGrade() < 1) {
+    throw Form::GradeTooHighException();
   }
   std::cout << "Form fill constructor called" << std::endl;
 }

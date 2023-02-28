@@ -3,17 +3,17 @@
 int main(void) {
   try {
     Bureaucrat politician2("joebiden", 149);
-    politician2.increaseGrade();
+    politician2.reduceGrade();
     std::cout << politician2 << std::endl;
-    politician2.increaseGrade();
+    politician2.reduceGrade();
   } catch (std::exception& e) {
     std::cout << e.what() << std::endl;
   }
   try {
     Bureaucrat politician1("obama", 2);
-    politician1.reduceGrade();
+    politician1.increaseGrade();
     std::cout << politician1 << std::endl;
-    politician1.reduceGrade();
+    politician1.increaseGrade();
   } catch (std::exception& e) {
     std::cout << e.what() << std::endl;
   }
