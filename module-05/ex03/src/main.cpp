@@ -5,6 +5,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 int main(void) {
+  srand((unsigned)time(NULL));
   try {
     Intern someRandomIntern;
     std::string types[3] = {"Shrubbery", "Robotomy", "Presidential"};

@@ -6,7 +6,6 @@
 class PresidentialPardonForm : public Form {
  public:
   // constructors and destructors
-  PresidentialPardonForm(void);
   PresidentialPardonForm(std::string target);
   ~PresidentialPardonForm(void);
   // copy constructors

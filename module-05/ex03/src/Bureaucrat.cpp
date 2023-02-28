@@ -8,9 +8,9 @@ Bureaucrat::Bureaucrat(void) : _name("non-defined"), _grade(150) {
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
   if (grade > 150) {
     // throwing the custom exception
-    throw Bureaucrat::GradeTooHighException();
-  } else if (grade < 1) {
     throw Bureaucrat::GradeTooLowException();
+  } else if (grade < 1) {
+    throw Bureaucrat::GradeTooHighException();
   } else {
     this->_grade = grade;
   }
@@ -40,14 +40,14 @@ std::string Bureaucrat::getName(void) const {
 int Bureaucrat::getGrade(void) const {
   return (this->_grade);
 }
-void Bureaucrat::increaseGrade(void) {
+void Bureaucrat::reduceGrade(void) {
   if (++this->_grade > 150) {
-    throw Bureaucrat::GradeTooHighException();
+    throw Bureaucrat::GradeTooLowException();
   }
 }
-void Bureaucrat::reduceGrade(void) {
+void Bureaucrat::increaseGrade(void) {
   if (--this->_grade < 1) {
-    throw Bureaucrat::GradeTooLowException();
+    throw Bureaucrat::GradeTooHighException();
   }
 }
 

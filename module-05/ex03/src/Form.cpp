@@ -11,17 +11,17 @@ Form::Form(std::string name, std::string target) : _name(name), _target(target),
 
 Form::Form(std::string name, const int signGrade, int execGrade) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
   if (this->getSignGrade() > 150 || this->getExecGrade() > 150) {
-    throw Form::GradeTooHighException();
-  } else if (this->getSignGrade() < 1 || this->getExecGrade() < 1) {
     throw Form::GradeTooLowException();
+  } else if (this->getSignGrade() < 1 || this->getExecGrade() < 1) {
+    throw Form::GradeTooHighException();
   }
 }
 
 Form::Form(std::string name, std::string target, const int signGrade, int execGrade) : _name(name), _target(target), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
   if (this->getSignGrade() > 150 || this->getExecGrade() > 150) {
-    throw Form::GradeTooHighException();
-  } else if (this->getSignGrade() < 1 || this->getExecGrade() < 1) {
     throw Form::GradeTooLowException();
+  } else if (this->getSignGrade() < 1 || this->getExecGrade() < 1) {
+    throw Form::GradeTooHighException();
   }
 }
 
