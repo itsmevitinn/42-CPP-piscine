@@ -17,5 +17,9 @@ int main(void) {
   meta->makeSound();
   //will not print the wrongcat sound because WrongAnimal makeSound() is not a virtual member-function
   test->makeSound();
+  delete meta;
+  delete j;
+  delete i;
+  delete test;
   return 0;
 }

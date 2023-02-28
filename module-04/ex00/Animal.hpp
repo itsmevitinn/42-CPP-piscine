@@ -14,7 +14,7 @@ class Animal {
   // copy constructor
   Animal(const Animal& copy);
   // destructors
-  ~Animal(void);
+  virtual ~Animal(void);
   // copy assignment operator
   Animal& operator=(const Animal& copy);
   // member functions
