@@ -55,16 +55,21 @@ void identify(Base* p) {
 void identify(Base& p) {
   std::cout << "Reference identified as: ";
   try {
-    if (dynamic_cast<A*>(&p)) {
+      A& a_try = dynamic_cast<A&>(p);
       std::cout << "A" << std::endl;
-    } else if (dynamic_cast<B*>(&p)) {
-      std::cout << "B" << std::endl;
-    } else if (dynamic_cast<C*>(&p)) {
-      std::cout << "C" << std::endl;
-    } else {
-      throw static_cast<std::string>("Bad reference cast");
+      (void) a_try;
     }
-  } catch (std::string error) {
-    std::cerr << error << std::endl;
-  }
+  catch (std::bad_cast &e) {}
+  try {
+      B& b_try = dynamic_cast<B&>(p);
+      std::cout << "B" << std::endl;
+      (void) b_try;
+    }
+  catch (std::bad_cast &e) {}
+  try {
+      C& c_try = dynamic_cast<C&>(p);
+      std::cout << "C" << std::endl;
+      (void) c_try;
+    }
+  catch (std::bad_cast &e) {}
 }
