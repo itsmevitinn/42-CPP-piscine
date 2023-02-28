@@ -1,8 +1,5 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void) : Form("unnamed", "non targeted", 72, 45) {
-}
-
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy", target, 72, 45) {
 }
 

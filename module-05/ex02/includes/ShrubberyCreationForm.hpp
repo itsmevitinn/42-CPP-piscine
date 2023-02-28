@@ -6,7 +6,6 @@
 class ShrubberyCreationForm : public Form {
  public:
   // constructors and destructors
-  ShrubberyCreationForm(void);
   ShrubberyCreationForm(std::string target);
   ~ShrubberyCreationForm(void);
   // copy constructors

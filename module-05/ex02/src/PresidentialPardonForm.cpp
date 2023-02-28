@@ -1,8 +1,5 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void) : Form("unnamed", "non targeted", 72, 45) {
-}
-
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("Presidential", target, 25, 5) {
 }
 

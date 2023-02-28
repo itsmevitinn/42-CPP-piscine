@@ -6,7 +6,6 @@
 class RobotomyRequestForm : public Form{
  public:
   // constructors and destructors
-  RobotomyRequestForm(void);
   RobotomyRequestForm(std::string target);
   ~RobotomyRequestForm(void);
   // copy constructors
