@@ -19,10 +19,13 @@ int main(void) {
   try {
     Array<std::string> words(6);
     Array<int> numbers(4);
+    Array<int> copy(numbers);
     populateArray(words, "Salve");
     populateArray(numbers, 30);
+    populateArray(copy, 40);
     printArray(words);
     printArray(numbers);
+    printArray(copy);
 		numbers[4];
   } catch (std::exception& e) {
     std::cout << e.what() << std::endl;
