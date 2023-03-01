@@ -7,6 +7,7 @@ int main(void) {
   ::iter(array, length, &printArray);
 
   std::string names[] = {"Vitor", "Camila", "Gabriel"};
+  // implicit instanciation of "printArray"
   ::iter(names, 3, &printArray);
 
   float numbers[] = {5.3, 10.3f, -104.22, -40};
