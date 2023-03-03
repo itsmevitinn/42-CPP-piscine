@@ -41,6 +41,7 @@ T& Array<T>::operator[](unsigned int index) {
 template <typename T>
 Array<T>& Array<T>::operator=(const Array& instance) {
   if (this != &instance) {
+    this->~Array();
     this->_size = instance._size;
     this->_array = new T[instance._size];
     for (unsigned int i = 0; i < instance._size; i++) {
