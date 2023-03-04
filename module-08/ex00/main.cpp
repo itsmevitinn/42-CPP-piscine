@@ -22,9 +22,9 @@ int main(void) {
     std::cout << "List beginning at: " << std::endl;
     for_each(startLst, lst.end(), printValue);
 
-    std::forward_list<int> forward;
+    std::deque<int> forward;
     forward.push_front(40);
-    std::forward_list<int>::iterator startForward = easyfind(forward, 15);
+    std::deque<int>::iterator startForward = easyfind(forward, 15);
     (void)startForward;
   } catch (std::exception& e) {
     std::cout << e.what() << std::endl;
