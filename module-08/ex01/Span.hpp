@@ -1,9 +1,12 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
+#include <algorithm>
+#include <cstdlib>
 #include <iostream>
 #include <numeric>
 #include <vector>
+
 class Span {
  private:
   std::vector<int> _array;
