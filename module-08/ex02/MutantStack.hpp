@@ -1,13 +1,14 @@
 #ifndef MUTANTSTACK_HPP
 #define MUTANTSTACK_HPP
 
+#include <algorithm>
 #include <iostream>
-#include <list>
+#include <deque>
 #include <stack>
 
-// std::list will be the underlying container of std::stack
-template <typename T, typename List = std::list<T> >
-class MutantStack : public std::stack<T, List> {
+template <typename T, typename Deque = std::deque<T> >
+// specifying std::deque (could be a vector or list) to be the underlying container of std::stack (if nothing is specified, underlying container is std::deque)
+class MutantStack : public std::stack<T, Deque> {
  public:
   // constructors and destructors
   MutantStack(void);
@@ -15,9 +16,9 @@ class MutantStack : public std::stack<T, List> {
   ~MutantStack(void);
   // copy assignment operator overload
   MutantStack& operator=(const MutantStack& instance);
-  // typedefs
-  typedef typename List::iterator iterator;
-  typedef typename List::iterator reverse_iterator;
+  // iterator must be from std::deque because we setted the underlying container to be std::deque
+  typedef typename Deque::iterator iterator;
+  typedef typename Deque::reverse_iterator reverse_iterator;
   // member functions
   iterator begin(void);
   iterator end(void);
