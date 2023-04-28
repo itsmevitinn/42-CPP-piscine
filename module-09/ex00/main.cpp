@@ -82,24 +82,24 @@ void getInputContent(std::map<std::string, float>& database, std::string filenam
   std::ifstream input_file;
   std::string date;
   std::string line;
+  char content[1024];
   float value;
 
   input_file.open(filename);
   if (!input_file.is_open())
     throw("Invalid input file!");
-  do {
-    std::getline(input_file, line);
-    date = line.substr(0, line.find(" "));
-    if (date == "date" || date.empty())
+  while (input_file.getline(content, 1024)) {
+    date = strtok(content, " |");
+    if (date == "date")
       continue;
     if (isValidDate(date)) {
-      value = atof(line.substr(line.find("|") + 2, std::string::npos).c_str());
+      value = atof(strtok(NULL, " |"));
       if (isValidValue(value))
         printBitcoinValue(date, value, database);
     } else {
       std::cerr << "Error: bad input => " << date << std::endl;
     }
-  } while (!line.empty());
+  }
 }
 
 int main(int argc, char** argv) {
