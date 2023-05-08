@@ -70,7 +70,7 @@ void printBitcoinValue(std::string date, float value, std::map<std::string, floa
   } else {
     lower_than_data = database.upper_bound(date);
     if (lower_than_data == database.begin())
-      std::cerr << "Data nao encontrada e nenhum valor menor existente em nossa base de dados!" << std::endl;
+      std::cerr << "Equal or smaller date not found!" << std::endl;
     else {
       --lower_than_data;
       std::cout << date << " => " << value << " = " << lower_than_data->second * value << std::endl;
