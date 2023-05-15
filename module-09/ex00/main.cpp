@@ -24,17 +24,13 @@ int isValidDate(std::string date) {
   int month;
   int day;
 
-  sscanf(date.c_str(), "%4d-%2d-%2d", &year, &month, &day);
-  if (year == 2022) {
-    if (month > 3)
-      return (0);
-    else if (month == 3 && day > 29)
-      return (0);
-  }
-
-  if (year < 2009 || year > 2022 || month < 1 || month > 12 || day < 1 || day > 31)
+  if (date > "2022-03-29" || date < "2009-01-02")
     return (0);
 
+  sscanf(date.c_str(), "%4d-%2d-%2d", &year, &month, &day);
+
+  if (month < 1 || month > 12 || day < 1 || day > 31)
+    return (0);
   if (month == 2) {
     if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
       if (day > 29)
