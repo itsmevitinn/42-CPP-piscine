@@ -14,7 +14,7 @@ void handleCalculations(RPN& data, std::string input) {
   for (std::string::iterator it = input.begin(); it != input.end(); ++it) {
     if (isdigit(*it))
       data.addNumber(atoi(&*it));
-    switch(*it){
+    switch (*it) {
       case '+':
         data.calculate(sum);
         break;
@@ -33,16 +33,15 @@ void handleCalculations(RPN& data, std::string input) {
 
 int main(int argc, char** argv) {
   try {
+    if (argc != 2)
+      throw std::invalid_argument("You must send only a single string as parameter!");
     std::string input = argv[1];
-    if (argc != 2) {
-      throw std::invalid_argument("Your must send a single string!");
-   } else if (!isValidInput(input) || input.size() == 1) {
-     throw std::invalid_argument("Invalid input!");
-   }
+    if (!isValidInput(input) || input.size() == 1)
+      throw std::invalid_argument("Invalid input!");
     RPN data;
     handleCalculations(data, input);
     data.printStack();
-  } catch(std::exception &e){
+  } catch (std::exception& e) {
     std::cerr << e.what() << std::endl;
   }
   return (0);
