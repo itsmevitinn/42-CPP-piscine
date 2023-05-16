@@ -9,10 +9,10 @@ enum Operator { sum, subtract, divide, multiply };
 
 class RPN {
    private:
-    std::stack<float> stack;
+    std::stack<int> stack;
 
    public:
-    void addNumber(float number);
+    void addNumber(int number);
     void calculate(Operator type);
     void printStack(void);
 };
