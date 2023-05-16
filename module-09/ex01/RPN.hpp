@@ -5,20 +5,16 @@
 #include <iostream>
 #include <stack>
 
-class RPN {
- private:
-  std::stack<float> stack;
-  float first_operand;
-  float second_operand;
-  float result;
+enum Operator { sum, subtract, divide, multiply };
 
- public:
-  void push(float number);
-  void sum(void);
-  void subtraction(void);
-  void division(void);
-  void multiplication(void);
-  void printStack(void);
+class RPN {
+   private:
+    std::stack<float> stack;
+
+   public:
+    void addNumber(float number);
+    void calculate(Operator type);
+    void printStack(void);
 };
 
 #endif

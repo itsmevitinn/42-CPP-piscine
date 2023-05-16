@@ -1,40 +1,49 @@
 #include "RPN.hpp"
 
-int isValidNumbers(std::string numbers) {
-  for (unsigned int i = 0; i < numbers.size(); i++) {
-    if (numbers[i] == '.' && (!isdigit(numbers[i - 1]) || !isdigit(numbers[i + 1])))
+int isValidInput(std::string input) {
+  for (unsigned int i = 0; i < input.size(); i++) {
+    if (input[i] == '.' && (!isdigit(input[i - 1]) || !isdigit(input[i + 1])))
       return (0);
-    else if (numbers[i] != '.' && numbers[i] != ' ' && !isdigit(numbers[i]))
+    else if (input[i] != '.' && input[i] != ' ' && !isdigit(input[i]) && input[i] != '+' && input[i] != '-' && input[i] != '/' && input[i] != '*')
       return (0);
   }
   return (1);
 }
 
-void fillStack(RPN& stack, std::string numbers) {
-  std::string temp;
-
-  for (unsigned int i = 0; i < numbers.size(); i++) {
-    while (isspace(numbers[i]))
-      i++;
-    while (isdigit(numbers[i]) || numbers[i] == '.')
-      temp += numbers[i++];
-    stack.push(atof(temp.c_str()));
-    temp = "";
+void handleCalculations(RPN& data, std::string input) {
+  for (std::string::iterator it = input.begin(); it != input.end(); ++it) {
+    if (isdigit(*it))
+      data.addNumber(atoi(&*it));
+    switch(*it){
+      case '+':
+        data.calculate(sum);
+        break;
+      case '-':
+        data.calculate(subtract);
+        break;
+      case '/':
+        data.calculate(divide);
+        break;
+      case '*':
+        data.calculate(multiply);
+        break;
+    }
   }
 }
 
 int main(int argc, char** argv) {
-  std::string numbers = argv[1];
-  if (argc != 2) {
-    std::cerr << "Your must send a single string!" << std::endl;
-    return (1);
-  } else if (!isValidNumbers(numbers) || numbers.size() == 1) {
-    std::cerr << "Invalid set of numbers!" << std::endl;
-    return (1);
+  try {
+    std::string input = argv[1];
+    if (argc != 2) {
+      throw std::invalid_argument("Your must send a single string!");
+   } else if (!isValidInput(input) || input.size() == 1) {
+     throw std::invalid_argument("Invalid input!");
+   }
+    RPN data;
+    handleCalculations(data, input);
+    data.printStack();
+  } catch(std::exception &e){
+    std::cerr << e.what() << std::endl;
   }
-  RPN stack;
-  fillStack(stack, numbers);
-  // performOperators(stack);
-  stack.printStack();
   return (0);
 }

@@ -1,49 +1,40 @@
 #include "RPN.hpp"
 
-void RPN::push(float number) {
+void RPN::addNumber(float number) {
   this->stack.push(number);
 }
 
-void RPN::sum(void) {
-  this->first_operand = this->stack.top();
-  this->stack.pop();
-  this->second_operand = this->stack.top();
-  this->stack.pop();
-  this->result = this->first_operand + this->second_operand;
-  this->stack.push(result);
-}
-
-void RPN::subtraction(void) {
-  this->first_operand = this->stack.top();
-  this->stack.pop();
-  this->second_operand = this->stack.top();
-  this->stack.pop();
-  this->result = this->first_operand - this->second_operand;
-  this->stack.push(result);
-}
-
-void RPN::division(void) {
-  this->first_operand = this->stack.top();
-  this->stack.pop();
-  this->second_operand = this->stack.top();
-  this->stack.pop();
-  this->result = this->first_operand / this->second_operand;
-  this->stack.push(result);
-}
-
-void RPN::multiplication(void) {
-  this->first_operand = this->stack.top();
-  this->stack.pop();
-  this->second_operand = this->stack.top();
-  this->stack.pop();
-  this->result = this->first_operand * this->second_operand;
-  this->stack.push(result);
+void RPN::calculate(Operator type) {
+  if (this->stack.size() >= 2) {
+    float first_operand = this->stack.top();
+    this->stack.pop();
+    float second_operand = this->stack.top();
+    this->stack.pop();
+    float result;
+    switch (type) {
+      case sum:
+        result = second_operand + first_operand;
+        std::cout << second_operand << " + " << first_operand << " = " << result << std::endl;
+        break;
+      case subtract:
+        result = second_operand - first_operand;
+        std::cout << second_operand << " - " << first_operand << " = " << result << std::endl;
+        break;
+      case divide:
+        result = second_operand / first_operand;
+        std::cout << second_operand << " / " << first_operand << " = " << result << std::endl;
+        break;
+      case multiply:
+        result = second_operand * first_operand;
+        std::cout << second_operand << " * " << first_operand << " = " << result << std::endl;
+        break;
+    }
+    this->stack.push(result);
+  }
 }
 
 void RPN::printStack(void) {
-  while (!this->stack.empty()) {
-    float a = this->stack.top();
-    std::cout << a << std::endl;
-    this->stack.pop();
-  }
+  if (this->stack.size() != 1)
+    throw std::invalid_argument("Impossible to perform reverse polish notation");
+  std::cout << this->stack.top() << std::endl;
 }
